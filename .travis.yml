@@ -7,3 +7,15 @@ before_install:
 script:
   - docker run -e CI=true ovidiuvlad09/frontenddd npm run test
 language: generic
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-343813294505"
+  bucket_path: "docker"
+  on:
+    branch: master
+  acces_key_id: $AWS_ACCESS_KEY
+  secret_key_key:
+    secure: "AWS_SECRET_KEY"
