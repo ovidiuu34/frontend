@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+before_script: cd project
+before_install:
+  - docker build -t ovidiuvlad09/frontenddd -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true ovidiuvlad09/frontenddd npm run test
+language: generic
